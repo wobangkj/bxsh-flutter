@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shop/pages/cart_page.dart';
 
 class Counter with ChangeNotifier {
   Map<String, int> _obj = {'num': 1};

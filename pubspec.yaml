@@ -37,6 +37,8 @@ dependencies:
   path_provider: ^1.6.27
   oktoast: ^2.3.2
   fluro: ^1.7.8
+  flutter_html: ^1.2.0
+  shared_preferences: ^0.5.12+4
 
 dev_dependencies:
   flutter_test:

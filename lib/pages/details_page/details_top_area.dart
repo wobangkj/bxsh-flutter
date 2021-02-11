@@ -5,12 +5,12 @@ import '../../provide/detail_info.dart';
 import '../../model/detailGoods.dart';
 
 class DetailsTopArea extends StatelessWidget {
-  final BuildContext context;
-  DetailsTopArea(this.context);
+  // final BuildContext context;
+  // DetailsTopArea(this.context);
 
   @override
-  Widget build(BuildContext _) {
-    GoodInfo goodsInfo = this.context.read<DetailInfoProvider>().goodsInfo;
+  Widget build(BuildContext context) {
+    GoodInfo goodsInfo = context.read<DetailInfoProvider>().goodsInfo;
     return Container(
         child: Container(
             child: Column(
@@ -50,7 +50,7 @@ class DetailsTopArea extends StatelessWidget {
       padding: EdgeInsets.only(left: 15.w),
       margin: EdgeInsets.only(top: 10.w),
       child: Text(
-        '编号:${num}',
+        '编号:$num',
         style: TextStyle(color: Colors.black12),
       ),
     );
@@ -66,14 +66,14 @@ class DetailsTopArea extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Text(
-            '￥${presentPrice}',
+            '￥$presentPrice',
             style: TextStyle(
               color: Colors.pinkAccent,
               fontSize: ScreenUtil().setSp(40),
             ),
           ),
           Text(
-            '市场价:￥${oriPrice}',
+            '市场价:￥$oriPrice',
             style: TextStyle(
                 color: Colors.black26, decoration: TextDecoration.lineThrough),
           )

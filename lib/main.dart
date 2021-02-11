@@ -6,7 +6,7 @@ import 'package:fluro/fluro.dart';
 import './provide/Counter.dart';
 import './provide/child_category.dart';
 import './provide/category_goods_list.dart';
-// import './provide/detail_info.dart';
+import './provide/cart.dart';
 import './pages/index_page.dart';
 import './routers/application.dart';
 import './routers/routers.dart';
@@ -15,7 +15,7 @@ void main() => runApp(MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => Counter()),
       ChangeNotifierProvider(create: (_) => ChildCategory()),
       ChangeNotifierProvider(create: (_) => CategoryGoodsListProvider()),
-      // ChangeNotifierProvider(create: (_) => DetailInfoProvider()),
+      ChangeNotifierProvider(create: (_) => CartProvide()),
     ], child: MyApp()));
 
 class MyApp extends StatelessWidget {

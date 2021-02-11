@@ -205,7 +205,7 @@ class __CategoryGoodsListState extends State<_CategoryGoodsList> {
                     }),
                 onLoad: () async {
                   context.read<ChildCategory>().addPage();
-                  await _getGoodsList('4', '',
+                  _getGoodsList('4', '',
                       page: context.read<ChildCategory>().page);
                 },
               ),

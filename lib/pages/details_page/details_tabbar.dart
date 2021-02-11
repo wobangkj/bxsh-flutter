@@ -4,13 +4,13 @@ import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DetailsTabBar extends StatelessWidget {
+  // final BuildContext context;
+  // DetailsTabBar(this.context);
+
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => DetailInfoProvider(),
-      builder: (context, child) => Container(
-        child: _myTabbar(context),
-      ),
+    return Container(
+      child: _myTabbar(context),
     );
   }
 
