@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../provide/detail_info.dart';
 import '../../provide/cart.dart';
 import '../../model/detailGoods.dart';
+import '../../provide/currentIndex.dart';
 
 class DetailsBottom extends StatelessWidget {
   @override
@@ -16,7 +17,10 @@ class DetailsBottom extends StatelessWidget {
       child: Row(
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              context.read<CurrentIndexProvide>().changeIndex(2);
+              Navigator.pop(context);
+            },
             child: Container(
               width: ScreenUtil().setWidth(110),
               alignment: Alignment.center,
@@ -50,22 +54,43 @@ class DetailsBottom extends StatelessWidget {
           // ),
           Consumer<CartProvide>(
             builder: (_, localer, __) => InkWell(
-              onTap: () {
-                localer.save(goodsInfo.goodsId, goodsInfo.goodsName, 1,
-                    goodsInfo.presentPrice, goodsInfo.image1);
-              },
-              child: Container(
-                alignment: Alignment.center,
-                width: ScreenUtil().setWidth(320),
-                height: ScreenUtil().setHeight(80),
-                color: Colors.green,
-                child: Text(
-                  '加入购物车',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: ScreenUtil().setSp(28)),
-                ),
-              ),
-            ),
+                onTap: () {
+                  localer.save(goodsInfo.goodsId, goodsInfo.goodsName, 1,
+                      goodsInfo.presentPrice, goodsInfo.image1);
+                },
+                child: Stack(
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      width: ScreenUtil().setWidth(320),
+                      height: ScreenUtil().setHeight(80),
+                      color: Colors.green,
+                      child: Text(
+                        '加入购物车',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: ScreenUtil().setSp(28)),
+                      ),
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(6, 3, 6, 3),
+                        decoration: BoxDecoration(
+                            color: Colors.pink,
+                            border: Border.all(width: 2, color: Colors.white),
+                            borderRadius: BorderRadius.circular(12.0)),
+                        child: Text(
+                          '${context.watch<CartProvide>().allGoodsCount}',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: ScreenUtil().setSp(22)),
+                        ),
+                      ),
+                    )
+                  ],
+                )),
           ),
           // ChangeNotifierProvider(
           //   create: (_) => CartProvide(),

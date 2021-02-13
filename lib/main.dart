@@ -7,6 +7,7 @@ import './provide/Counter.dart';
 import './provide/child_category.dart';
 import './provide/category_goods_list.dart';
 import './provide/cart.dart';
+import './provide/currentIndex.dart';
 import './pages/index_page.dart';
 import './routers/application.dart';
 import './routers/routers.dart';
@@ -16,6 +17,7 @@ void main() => runApp(MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => ChildCategory()),
       ChangeNotifierProvider(create: (_) => CategoryGoodsListProvider()),
       ChangeNotifierProvider(create: (_) => CartProvide()),
+      ChangeNotifierProvider(create: (_) => CurrentIndexProvide()),
     ], child: MyApp()));
 
 class MyApp extends StatelessWidget {

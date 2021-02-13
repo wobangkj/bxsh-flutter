@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import '../components/lazy_indexed_stack.dart';
 import './cart_page.dart';
 import './home_page.dart';
 import './category_page.dart';
 import './member_page.dart';
+import '../provide/currentIndex.dart';
 
 class IndexPage extends StatefulWidget {
   @override
@@ -29,33 +31,31 @@ class _IndexPageState extends State<IndexPage> {
   ];
 
   int currentIndex = 0;
-  var currentPage;
 
   @override
   void initState() {
-    currentPage = tabBodies[currentIndex];
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
-      bottomNavigationBar: BottomNavigationBar(
-        items: bottomTabs,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: currentIndex,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-            currentPage = tabBodies[currentIndex];
-          });
-        },
-      ),
-      body: LazyIndexedStack(
-        index: currentIndex,
-        children: tabBodies,
-      ),
-    );
+    return Consumer<CurrentIndexProvide>(builder: (context, _, __) {
+      int currentIndex = context.watch<CurrentIndexProvide>().currentIndex;
+      return Scaffold(
+        backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
+        bottomNavigationBar: BottomNavigationBar(
+          items: bottomTabs,
+          type: BottomNavigationBarType.fixed,
+          currentIndex: currentIndex,
+          onTap: (index) {
+            context.read<CurrentIndexProvide>().changeIndex(index);
+          },
+        ),
+        body: LazyIndexedStack(
+          index: currentIndex,
+          children: tabBodies,
+        ),
+      );
+    });
   }
 }

@@ -39,6 +39,7 @@ dependencies:
   fluro: ^1.7.8
   flutter_html: ^1.2.0
   shared_preferences: ^0.5.12+4
+  common_utils: ^1.2.4
 
 dev_dependencies:
   flutter_test:

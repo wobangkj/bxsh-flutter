@@ -5,7 +5,7 @@ import './details_page/details_top_area.dart';
 import './details_page/details_explain.dart';
 import './details_page/details_tabbar.dart';
 import './details_page/details_web.dart';
-import 'details_page/details_bottom.dart';
+import './details_page/details_bottom.dart';
 
 class DetailsPage extends StatelessWidget {
   final String goodsId;
